@@ -61,18 +61,21 @@ tail -f /opt/print-wms/data/logs/wms.log
 ### Windows（目标机不联网、不装任何东西）
 
 1. 构建机（有网）跑一次：`bash tools/download_offline_package.sh` → 生成 `offline/`
-2. 若前端有改动，先在 `web/` 里 `npm install && npm run build`，把 `web/dist` 拷到 `app/static/web`
+2. 若前端有改动：`cd web && npm install && npm run build`
+   （产物直接输出到 `app/static/web/`，无需手工拷贝）
 3. 整个文件夹拷到目标机，双击 `start.bat`：首启自动解压绿色 Python、离线装依赖，之后秒开
-   - 目标机**不需要 Node**（前端是已编译的静态文件）
+   - 目标机**不需要 Node**（前端是已编译好的静态文件）
 
 ### 本地开发
 
 ```bash
 # 后端（Python 3.12）
 python -m uvicorn app.main:app --reload --port 8000
-# 前端（另开一个终端，vite 代理 /api 到 8000）
-cd web && npm install && npm run dev
+# 前端（另开一个终端；vite 已配好 /api 与 /uploads 代理到 8000）
+cd web && npm install && npm run dev   # 打开 http://localhost:5173
 ```
+
+前端改完记得 `npm run build` 再提交，产出会更新到 `app/static/web/`（生产入口用的就是它）。
 
 ## 常用调整
 
