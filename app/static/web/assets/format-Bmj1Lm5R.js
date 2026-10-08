@@ -1,0 +1,1 @@
+function n(r){return r==null||Number.isNaN(r)?"—":Number.isInteger(r)?String(r):r.toFixed(2)}function e(r){return r==null?"":(Number.isInteger(r),String(r))}function t(r){return r?r.slice(0,16):"—"}export{t as a,n as b,e as f};

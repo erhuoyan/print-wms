@@ -1,0 +1,18 @@
+# 运行时数据（数据库、上传的单据照片、导出文件、日志）
+data/
+
+# 离线部署包（体积大，单独分发）
+offline/
+runtime/
+
+# 前端
+web/node_modules/
+web/dist/
+
+# 本地工具/技能配置，不进仓库
+.omp/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
